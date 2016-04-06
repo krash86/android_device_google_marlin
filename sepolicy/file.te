@@ -10,7 +10,6 @@ type perfd_data_file, file_type, data_file_type;
 type ramdump_data_file, file_type, data_file_type, mlstrustedobject;
 type time_data_file, file_type, data_file_type;
 type display_data_file, file_type, data_file_type;
-type netmgr_data_file, file_type, data_file_type;
 
 # /sys
 type sysfs_camera, sysfs_type, fs_type;
@@ -47,7 +46,3 @@ type bt_firmware_file, file_type;
 type persist_file, file_type;
 type persist_data_file, file_type;
 type persist_display_file, file_type;
-
-# msm_irqbalance
-type proc_irq, fs_type;
-type irqbalance_socket, file_type;
