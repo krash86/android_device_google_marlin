@@ -21,6 +21,8 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    export DOWNLOAD_CACHE /data/cache
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -225,12 +227,11 @@ on post-fs-data
     chown radio radio /data/misc/radio/db_check_done
     chmod 0660 /data/misc/radio/db_check_done
 
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
-    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
-    chmod 0660 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
-    chown system system /sys/class/devfreq/soc:qcom,gpubw/min_freq
-    chmod 0660 /sys/class/devfreq/soc:qcom,gpubw/min_freq
+    # Create the cache directory since we don't have dedicated cache partition
+    mkdir /data/cache 0770 system cache
+    mkdir /data/cache/recovery 0770 system cache
+    mkdir /data/cache/backup_stage 0700 system system
+    mkdir /data/cache/backup 0700 system system
 
 on property:init.svc.bootanim=running
     write /sys/class/leds/wled/brightness 4095
