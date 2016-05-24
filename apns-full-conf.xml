@@ -27121,11 +27121,10 @@
   <apn carrier="Telstra IMS"
       mcc="505"
       mnc="01"
-      apn="ims"
+      apn="telstra.ims"
       type="ims"
       protocol="IPV4V6"
       roaming_protocol="IPV4V6"
-      user_visible="false"
   />
 
   <apn carrier="Telstra Internet"
