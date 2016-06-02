@@ -389,15 +389,6 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/platform/soc/624000.ufshc/by-name/frp
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    sdm.debug.disable_rotator_split=1 \
-    qdcm.only_pcc_for_trans=1 \
-    qdcm.diagonal_matrix_mode=1
-
-# Enable low power video mode for 4K encode
-PRODUCT_PROPERTY_OVERRIDES += \
-    vidc.debug.perf.mode=2
-
 # OEM Unlock reporting
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.oem_unlock_supported=1
