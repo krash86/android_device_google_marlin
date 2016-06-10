@@ -7090,7 +7090,7 @@
   <apn carrier="Fido IMS"
       mcc="302"
       mnc="370"
-      apn="ims"
+      apn="IMS"
       type="ims"
       mvno_match_data="DD"
       mvno_type="gid"
