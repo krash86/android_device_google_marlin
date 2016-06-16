@@ -252,32 +252,6 @@ static int process_video_encode_hint(void *metadata)
     return HINT_NONE;
 }
 
-static int process_activity_launch_hint(void *data)
-{
-    // boost will timeout in 5s
-    int duration = 5000;
-    if (sustained_performance_mode || vr_mode) {
-        return HINT_HANDLED;
-    }
-
-    ALOGD("LAUNCH HINT: %s", data ? "ON" : "OFF");
-    if (data && launch_mode == 0) {
-        launch_handle = process_boost(launch_handle, duration);
-        if (launch_handle > 0) {
-            launch_mode = 1;
-            ALOGI("Activity launch hint handled");
-            return HINT_HANDLED;
-        } else {
-            return HINT_NONE;
-        }
-    } else if (data == NULL  && launch_mode == 1) {
-        release_request(launch_handle);
-        launch_mode = 0;
-        return HINT_HANDLED;
-    }
-    return HINT_NONE;
-}
-
 int power_hint_override(struct power_module *module, power_hint_t hint, void *data)
 {
     int ret_val = HINT_NONE;
@@ -289,9 +263,6 @@ int power_hint_override(struct power_module *module, power_hint_t hint, void *da
 #endif
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);
-            break;
-        case POWER_HINT_LAUNCH:
-            ret_val = process_activity_launch_hint(data);
             break;
         default:
             break;
