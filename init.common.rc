@@ -534,6 +534,15 @@ on property:sys.ims.DATA_DAEMON_STATUS=1
 service ssr_setup /system/bin/ssr_setup
     class main
     user root
+<<<<<<< 264eb6fa7f15d302cb8b0f3fe86c6d42a527a991
+=======
+    group system
+    oneshot
+
+service ssr_setup /system/bin/ssr_setup
+    class main
+    user root
+>>>>>>> Marlin/Sailfish: enable modem subsystem silent restart
     group root system
     oneshot
 
@@ -545,7 +554,11 @@ service ss_ramdump /system/bin/subsystem_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
+<<<<<<< 264eb6fa7f15d302cb8b0f3fe86c6d42a527a991
     mkdir /data/ramdump 761 root system
+=======
+    mkdir /data/ramdump 760 root root
+>>>>>>> Marlin/Sailfish: enable modem subsystem silent restart
     start ss_ramdump
 
 on property:persist.sys.ssr.enable_ramdumps=0
