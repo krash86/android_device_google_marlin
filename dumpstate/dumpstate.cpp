@@ -15,48 +15,10 @@
  */
 
 #include <dumpstate.h>
+#include <cutils/properties.h>
 #include <stdlib.h>
 #include <string>
 #include <cutils/properties.h>
-
-#define LOG_TAG "dumpstate"
-#include <cutils/log.h>
-
-#define MODEM_LOG_PREFIX_PROPERTY "ro.radio.log_prefix"
-#define MODEM_LOGGING_SWITCH "persist.radio.smlog_switch"
-
-static std::vector<std::string> ril_and_netmgr_logs
-                {
-                 "/data/misc/radio/ril_log",
-                 "/data/misc/radio/ril_log_old",
-                 "/data/misc/netmgr/netmgr_log",
-                 "/data/misc/netmgr/netmgr_log_old"
-                };
-static std::string modem_log_folder_name = "modem_log";
-
-static std::string get_property_value (const std::string& property_name) {
-
-    char property[PROPERTY_VALUE_MAX];
-    property_get (property_name.c_str(), property, "");
-
-    return property;
-}
-
-/*
- * Returns true if the system property `key` has the value "1", "y", "yes",
- * "on", or "true", false for "0", "n", "no", "off", or "false",
- * or `default_value` otherwise.
- */
-static bool get_bool_property_value (const std::string& property_name,
-                                     bool default_value) {
-    std::string value = get_property_value(property_name);
-    if (value == "1" || value == "y" || value == "yes" || value == "on" || value == "true") {
-        return true;
-    } else if (value == "0" || value == "n" || value == "no" || value == "off" || value == "false") {
-        return false;
-    }
-    return default_value;
-}
 
 void dumpstate_board()
 {
