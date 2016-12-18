@@ -110,6 +110,8 @@ BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp
 
 BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy
 BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/verizon
+BOARD_SEPOLICY_DIRS += device/google/marlin/sepolicy/sm
+
 BOARD_SECCOMP_POLICY += device/google/marlin/seccomp
 
 BOARD_EGL_CFG := device/google/marlin/egl.cfg
@@ -191,7 +193,8 @@ TARGET_USE_MDTP := true
 # Use prebuilt APN lib from Verizon Wireless
 TARGET_USE_VERIZON_APN_LIB_PREBUILT := true
 
-TARGET_BOARD_KERNEL_HEADERS := device/google/marlin/kernel-headers
+TARGET_BOARD_KERNEL_HEADERS := device/google/marlin/kernel-headers \
+			       hardware/qcom/msm8996/kernel-headers
 
 # Install odex files into the other system image
 BOARD_USES_SYSTEM_OTHER_ODEX := true
