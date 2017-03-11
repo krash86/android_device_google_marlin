@@ -1,2 +1,8 @@
 allow untrusted_app sysfs_zram:dir search;
 allow untrusted_app sysfs_zram:file read;
+
+allow untrusted_app perfd_data_file:dir search;
+allow untrusted_app perfd_data_file:sock_file write;
+
+
+
