@@ -4,6 +4,12 @@ allow system_app cne_service:service_manager add;
 allow system_app time:unix_stream_socket connectto;
 get_prop(system_app, hw_sku_prop);
 r_dir_file(system_app, sysfs_msm_subsys)
+
+allow system_app fingerprintd:binder call;
+allow system_app imscm:binder call;
+allow system_app per_mgr:binder call;
+allow system_app update_engine:binder call;
+
 userdebug_or_eng(`
   allow system_app ramdump_data_file:dir r_dir_perms;
   allow system_app ramdump_data_file:file r_file_perms;
