@@ -1,0 +1,2 @@
+allow installd theme_data_file:dir { getattr read };
+allow installd theme_data_file:dir { open search };
