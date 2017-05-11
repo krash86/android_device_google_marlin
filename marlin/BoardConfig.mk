@@ -217,3 +217,6 @@ TARGET_IGNORE_VENDOR_AUDIO_EFFECTS_CONF := true
 
 #NFC
 NXP_CHIP_TYPE := PN551
+
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
