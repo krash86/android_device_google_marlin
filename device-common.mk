@@ -290,6 +290,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.eis.enable=1 \
     persist.camera.is_type=4
 
+# Camera
+ PRODUCT_PACKAGES += libion
+
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd
